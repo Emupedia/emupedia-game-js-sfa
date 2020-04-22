@@ -148,7 +148,7 @@ Key.prototype.handleKey = function(keyCode)
         this.ChainOnKeyAnimationFrame = (frameOffset || 0);
         this.ChainOnKeyMinOffset = offset;
     }
-   
+
     Animation.prototype.allowInterupt = function(move,frameOffset,flags)
     {
         this.InteruptAnimation = move;
@@ -319,10 +319,6 @@ Key.prototype.handleKey = function(keyCode)
     GenericAnimation.prototype.hasUserData = function(index)
     {
         var frame = this.BaseAnimation.Frames[index];
-        if(!frame)
-        {
-            debugger;
-        }
         return !!frame && !!frame.UserData && (frame.UserData.length > 0);
     }
     GenericAnimation.prototype.addUserDataToFrame = function(index,data)
@@ -436,7 +432,7 @@ Key.prototype.handleKey = function(keyCode)
         {
             if(!element)
                 return false;
-            
+
             offsetX = newFrame.X;
             offsetY = newFrame.Y;
 
@@ -638,12 +634,12 @@ var CreateFrameImageLookup = function()
     var nbImages_ = 0;
     var nbImagesLoading_ = 0;
     var element_ = window.document.getElementById("spnImagesLoading");
-    
+
     var FrameImageLookup = function()
     {
         this.Data = {}
     }
-    
+
     FrameImageLookup.prototype.getNbImages = function() { return nbImages_; }
     FrameImageLookup.prototype.getNbImagesLoading = function() { return nbImagesLoading_; }
     FrameImageLookup.prototype.getElement = function() { return element_; }
@@ -658,7 +654,7 @@ var CreateFrameImageLookup = function()
             return null;
         }
     }
-    
+
     /*Image only loaded once*/
     FrameImageLookup.prototype.load = function(src)
     {
@@ -666,7 +662,7 @@ var CreateFrameImageLookup = function()
         {
             ++nbImagesLoading_;
             ++nbImages_;
-    
+
             element_.innerHTML = "0";
             images_[src] = new Image();
             //images_[src] = window.document.createElement("img");
@@ -713,18 +709,18 @@ var CreateSpriteLookup = function()
     var nbImages_ = 0;
     var nbImagesLoading_ = 0;
     var element_ = window.document.getElementById("spnImagesLoading");
-    
-    
+
+
     var SpriteLookup = function()
     {
         this.Data = {};
     }
-    
+
     /*Image only loaded once*/
     SpriteLookup.prototype.load = function(key,src,left,bottom,width,height)
     {
         src = src.replace("|","");
-    
+
         if(!this.get(key))
         {
             this.Data[key] = {Key:key,Sprite:src,Left:left,Bottom:bottom,Width:width,Height:height,WidthInt:parseInt(width),HeightInt:parseInt(height)};
@@ -834,7 +830,7 @@ var spriteLookup_ = CreateSpriteLookup();
         this.FlagsToClear.HitReact = !!flagsToClear ? (flagsToClear.HitReact || 0) : 0;
 
         this.FlagsToSend = flagsToSend || MISC_FLAGS.NONE;
-    
+
         this.Priority = priority || 0;
         this.BaseDamage = baseDamage || 0;
         this.X = x || 0;
@@ -867,7 +863,7 @@ var spriteLookup_ = CreateSpriteLookup();
     {
         this.HitStop = me;
         this.EnemyHitStop = you;
-        
+
         return this;
     }
     Frame.prototype.set = function(params)
@@ -1029,13 +1025,13 @@ var CreateFrameAdapter = function(frameArray,nbFrames)
     }
     Projectile.prototype.getAttackState = function(hitData)
     {
-        return (!!hitData && !!hitData.Nb) 
+        return (!!hitData && !!hitData.Nb)
                 ? (this.AttackStateData[hitData.Nb] || this.AttackState)
                 : this.AttackState;
     }
     Projectile.prototype.getHitState = function(hitData)
     {
-        return (!!hitData && !!hitData.Nb) 
+        return (!!hitData && !!hitData.Nb)
                 ? (this.HitStateData[hitData.Nb] || this.HitState)
                 : this.HitState;
     }
@@ -1370,7 +1366,7 @@ var CreateFrameAdapter = function(frameArray,nbFrames)
             return true;
         }
 
-        return false;        
+        return false;
     }
 
 var FlipCoord = function(x,width)
