@@ -76,6 +76,7 @@ function AlertError(text) {
 
 var announcer_ = CreateAnnouncer();
 var game_ = CreateGame();
+game_.setTeamMode(false);
 var fontSystem_ = CreateFontSystem();
 
 var runGameLoop_ = (function (thisValue) {
@@ -227,8 +228,5 @@ var $$init = function() {
 var startUpGame = function() {
 	$$init();
 
-	if (getRand(100) > 50)
-		debug_.startMatch([{A: CHARACTERS.RYU, C: true}, {A: CHARACTERS.KEN, C: true}], [{A: CHARACTERS.AKUMA, C: true}], "akuma");
-	else
-		debug_.startMatch([{A: CHARACTERS.RYU, C: true}, {A: CHARACTERS.KEN, C: true}], [{A: CHARACTERS.MBISON, C: true}], "dramatic_battle");
+	game_.startRandomMatch();
 }();
