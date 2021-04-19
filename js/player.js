@@ -24,32 +24,8 @@
 	this.LeftKey = user.Left;
 	this.RightKey = user.Right;
 	//store all of the key mappings
-	this.Buttons = {};
-	this.Buttons[user.Left] = {Button: user.Left, Bit: 1};
-	this.Buttons[user.Right] = {Button: user.Right, Bit: 2};
-	this.Buttons[user.Up] = {Button: user.Up, Bit: 4};
-	this.Buttons[user.Down] = {Button: user.Down, Bit: 8};
-	this.Buttons[user.P1] = {Button: user.P1, Bit: 16};
-	this.Buttons[user.P2] = {Button: user.P2, Bit: 32};
-	this.Buttons[user.P3] = {Button: user.P3, Bit: 64};
-	this.Buttons[user.K1] = {Button: user.K1, Bit: 128};
-	this.Buttons[user.K2] = {Button: user.K2, Bit: 256};
-	this.Buttons[user.K3] = {Button: user.K3, Bit: 512};
-	this.Buttons[user.Turn] = {Button: user.Turn, Bit: 1024};
 
-	this.ButtonStates = [];
-	this.ButtonState = {};
-	this.ButtonState[this.Buttons[user.Left].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.Right].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.Up].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.Down].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.P1].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.P2].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.P3].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.K1].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.K2].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.K3].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
-	this.ButtonState[this.Buttons[user.Turn].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.setButtons(user);
 
 	this.ForceNoAdjustShadowPosition = false;
 
@@ -1052,3 +1028,44 @@ Player.prototype.resume = function() {
 Player.prototype.justWon = function (frame) {
 	//this.WinAnimationFrame = frame + CONSTANTS.ROUND_OVER_DELAY + (getRand(40) - 10);
 };
+
+Player.prototype.setButtons = function (user) {
+	this.Buttons = {};
+	this.Buttons[user.Left] = {Button: user.Left, Bit: 1};
+	this.Buttons[user.Right] = {Button: user.Right, Bit: 2};
+	this.Buttons[user.Up] = {Button: user.Up, Bit: 4};
+	this.Buttons[user.Down] = {Button: user.Down, Bit: 8};
+	this.Buttons[user.P1] = {Button: user.P1, Bit: 16};
+	this.Buttons[user.P2] = {Button: user.P2, Bit: 32};
+	this.Buttons[user.P3] = {Button: user.P3, Bit: 64};
+	this.Buttons[user.K1] = {Button: user.K1, Bit: 128};
+	this.Buttons[user.K2] = {Button: user.K2, Bit: 256};
+	this.Buttons[user.K3] = {Button: user.K3, Bit: 512};
+	this.Buttons[user.Turn] = {Button: user.Turn, Bit: 1024};
+
+	this.ButtonStates = [];
+	this.ButtonState = {};
+	this.ButtonState[this.Buttons[user.Left].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.Right].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.Up].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.Down].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.P1].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.P2].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.P3].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.K1].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.K2].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.K3].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+	this.ButtonState[this.Buttons[user.Turn].Bit] = {Value: BUTTON_STATE.NONE, Frame: 0};
+
+	this.LeftKey = user.Left;
+	this.RightKey = user.Right;
+
+	if (this.Direction === -1) {
+		this.Buttons[this.LeftKey].Bit = 2;
+		this.Buttons[this.RightKey].Bit = 1;
+	} else {
+		this.Buttons[this.LeftKey].Bit = 1;
+		this.Buttons[this.RightKey].Bit = 2;
+	}
+
+}

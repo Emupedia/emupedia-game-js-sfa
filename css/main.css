@@ -772,3 +772,178 @@ div div.Text img {
 #pnlStatus, #pnlMenu, #pnlProjectiles {
 	display: none;
 }
+
+.debug-modal {
+	color: #000;
+	z-index: 9999999999;
+	position: absolute;
+	top: 10px;
+	left: 50px;
+	bottom: 50px;
+	right: 50px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: #aaa 0 0 10px 5px;
+}
+
+.subtitle {
+	font-size: 125%;
+	font-weight: 600;
+}
+.modal-header, .modal-body {
+	display: flex;
+	padding: 10px;
+}
+.modal-header {
+}
+.modal-header span.title {
+	font-weight: bold;
+	flex-grow: 1;
+	font-size: 200%;
+}
+.modal-body {
+	flex-direction: column;
+}
+.debug-main-container {
+}
+.debug-qm-container, .debug-main-container, .debug-pe-container, .debug-other-container {
+	padding: 10px 50px;
+}
+.debug-qm-teams-container {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	margin-bottom: 20px;
+}
+.debug-qm-team {
+	width: 40%;
+}
+.debug-qm-stage-selector-container {
+	display: flex;
+	flex-direction: column;
+}
+.debug-qm-stage-selector {
+	width: 100%;
+	margin-bottom: 15px;
+}
+.debug-qm-team,.debug-qm-stage-selector {
+	display: flex;
+	flex-direction: column;
+}
+select.player-selector {
+	width: 100%;
+}
+.debug-qm-team-controls {
+	display: flex;
+}
+.debug-qm-team-controls > button {
+	width: 100%;
+}
+
+.debug-qm-details {
+	padding: 10px;
+	background-color: #aaddff;
+}
+
+.debug-qm-controls {
+	margin-top: 5px;
+}
+
+.player-selectors-container {
+	margin-bottom: 5px;
+}
+
+.team-desc {
+	font-weight: 600;
+}
+
+.stage-desc {
+	font-weight: 600;
+}
+
+select {
+	padding: 5px;
+}
+
+.tab-menu {
+	display: flex;
+	background-color: #eee;
+	border-bottom: solid 1px #000;
+}
+
+.tab {
+	border: none;
+}
+
+.tab.selected {
+	font-weight: 600;
+	border-bottom: 2px solid #000;
+}
+
+button {
+	color: #fff;
+	background-color: #337ab7;
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid #2e6da4;
+	padding: 6px 12px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+}
+
+.tab.selected button {
+	color: #000;
+}
+
+.tab button {
+	color: #999;
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+button.close-button {
+	background-color: #d9534f;
+	border-color: #d43f3a;
+}
+.error {
+	color: #d9534f;
+}
+.success {
+	color: #5cb85c;
+}
+.show-debug-modal {
+	position: fixed;
+	top: 581px;
+}
+.show-debug-modal button {
+	font-size: 2rem;
+}
+.item-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 3px 10px;
+}
+.item-row .label {
+	width: 75px;
+	text-align: right;
+}
+.item-row .input {
+	margin-left: 5px;
+	text-align: right;
+}
+.item-row .input-multi {
+	margin-left: 5px;
+}
+.projectile-flags {
+	display: flex;
+	flex-direction: column;
+}
+.grayed-out {
+	color: #bbb;
+}
