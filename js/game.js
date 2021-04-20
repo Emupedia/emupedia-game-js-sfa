@@ -534,9 +534,10 @@ var CreateGame = function() {
 	};
 
 	Game.prototype.handleGamePadHelper = function (pad, key) {
-		if (!!pad[key] !== keyboardState_["_" + key]) {
+		var button = pad[key];
+		if (!!button && (button.pressed !== !!keyboardState_["_" + key])) {
 			if (!!managed_) {
-				this.handleKeyPress({which: key}, !!pad[key]);
+				this.handleKeyPress({which: key}, button.pressed);
 			}
 		}
 	};

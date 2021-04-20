@@ -103,6 +103,23 @@ var User = function (right, up, left, down, p1, p2, p3, k1, k2, k3, turn, coin, 
 	this.Turn = turn;
 	this.Coin = coin;
 	this.Start = start;
+
+	this.initialKeys = {
+		right: this.Right,
+		up: this.Up,
+		left: this.Left,
+		down: this.Down,
+		p1: this.P1,
+		p2: this.P2,
+		p3: this.P3,
+		k1: this.K1,
+		k2: this.K2,
+		k3: this.K3,
+		turn: this.Turn,
+		coin: this.Coin,
+		start: this.Start
+	};
+
 	this.PlayerNdx = 0;
 	this.Team = null;
 	this.Player = null;
@@ -976,4 +993,54 @@ User.prototype.addStanceAnimations = function() {
 	}
 
 	this.IsInitialized = true;
+};
+
+
+/**
+ * Uses the keyboard
+ */
+User.prototype.useKeyboard = function () {
+	this.GamepadIndex = null;
+	this.Right = this.initialKeys.right;
+	this.Up = this.initialKeys.up;
+	this.Left = this.initialKeys.left;
+	this.Down = this.initialKeys.down;
+	this.P1 = this.initialKeys.p1;
+	this.P2 = this.initialKeys.p2;
+	this.P3 = this.initialKeys.p3;
+	this.K1 = this.initialKeys.k1;
+	this.K2 = this.initialKeys.k2;
+	this.K3 = this.initialKeys.k3;
+	this.Turn = this.initialKeys.turn;
+	this.Coin = this.initialKeys.coin;
+	this.Start = this.initialKeys.start;
+
+	if (this.Player) {
+		this.Player.setButtons(this);
+	}
+};
+
+
+/**
+ * Uses the gamepad plugged into the first slot
+ */
+User.prototype.useGamePad = function () {
+	this.GamepadIndex = 0;
+	this.Right = GAMEPAD.RIGHT;
+	this.Up = GAMEPAD.UP;
+	this.Left = GAMEPAD.LEFT;
+	this.Down = GAMEPAD.DOWN;
+	this.P1 = GAMEPAD.LS0;
+	this.P2 = GAMEPAD.B3;
+	this.P3 = GAMEPAD.B2;
+	this.K1 = GAMEPAD.RS0;
+	this.K2 = GAMEPAD.B1;
+	this.K3 = GAMEPAD.B0;
+	this.Turn = GAMEPAD.RS1;
+	this.Coin = GAMEPAD.SELECT;
+	this.Start = GAMEPAD.START;
+
+	if (this.Player) {
+		this.Player.setButtons(this);
+	}
 };
